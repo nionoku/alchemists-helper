@@ -2,60 +2,64 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
-      dark
+      flat
+      dense
     >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+      <v-toolbar-title>Alchemists Helper</v-toolbar-title>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+      <template v-slot:extension>
+        <v-tabs
+          v-model="tabs.model"
+          fixed-tabs
+        >
+          <v-tabs-slider />
 
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+          <v-tab>
+            <v-icon
+              v-if="$vuetify.breakpoint.xs"
+              class="mr-2"
+            >
+              mdi-flask-outline
+            </v-icon>
+            <span v-if="$vuetify.breakpoint.mdAndUp">{{ $vuetify.lang.t('$vuetify.tabs.tablet') }}</span>
+          </v-tab>
+          <v-tab>
+            <v-icon
+              v-if="$vuetify.breakpoint.xs"
+              class="mr-2"
+            >
+              mdi-grid
+            </v-icon>
+            <span v-if="$vuetify.breakpoint.mdAndUp">{{ $vuetify.lang.t('$vuetify.tabs.record_sheet') }}</span>
+          </v-tab>
+        </v-tabs>
+      </template>
     </v-app-bar>
 
     <v-content>
-      <HelloWorld/>
+      <v-container fill-height>
+        <v-tabs-items
+          v-model="tabs.model"
+          class="flex-full-size"
+        >
+          <v-tab-item class="flex-full-size">
+            <TabletComponent v-model="tablet" />
+          </v-tab-item>
+
+          <v-tab-item>
+            <RecordSheetComponent v-model="tablet" />
+          </v-tab-item>
+        </v-tabs-items>
+      </v-container>
     </v-content>
   </v-app>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-import HelloWorld from '@/components/HelloWorld.vue'
+<style lang="scss" scoped>
+.flex-full-size {
+  flex: 1;
+  height: 100%;
+}
+</style>
 
-export default Vue.extend({
-  name: 'App',
-
-  components: {
-    HelloWorld
-  },
-
-  data: () => ({
-    //
-  })
-})
-</script>
+<script lang="ts" src="@/view-models/AppView" />
