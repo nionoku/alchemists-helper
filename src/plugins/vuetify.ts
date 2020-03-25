@@ -1,5 +1,9 @@
+import '@mdi/font/css/materialdesignicons.css';
+
 import Vue from 'vue';
 import Vuetify from 'vuetify/lib';
+import ru from '@/locale/ru.json';
+import en from '@/locale/en.json';
 
 Vue.use(Vuetify);
 
@@ -19,5 +23,9 @@ export default new Vuetify({
         warning: '#FFC107'
       }
     }
+  },
+  lang: {
+    locales: { ru, en },
+    current: navigator.language.slice(0, 2) || 'en'
   }
 });
