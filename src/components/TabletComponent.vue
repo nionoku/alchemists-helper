@@ -5,7 +5,7 @@
       <div
         v-for="(j) in (tablet.length + 1 - i)"
         :key="[1, i, j].join('')"
-        :class="`item color-row-${i} color-col-${j + 1}`"
+        :class="`item item-row color-row-${i} color-col-${j + 1}`"
         :style="{ 'grid-row': i, 'grid-column': j + 1 }"
         @click="setPotition(tablet.length - i, j - 1)"
       >
@@ -19,7 +19,7 @@
       <div
         v-for="(j) in (tablet.length + 1 - i)"
         :key="[2, i, j].join('')"
-        :class="`item color-row-${cells.size - j} color-col-${cells.size - i + 1}`"
+        :class="`item item-col color-row-${cells.size - j} color-col-${cells.size - i + 1}`"
         :style="{ 'grid-row': cells.size - j, 'grid-column': cells.size + 1 - i }"
         @click="setPotition(tablet.length - i, j - 1)"
       >
@@ -43,7 +43,7 @@
     <template v-for="(i) in ingridients.length">
       <div
         :key="[4, i].join('')"
-        :class="`item color-row-${i}`"
+        :class="`item item-row ingridient color-row-${i}`"
         :style="{ 'grid-row': i, 'grid-column': 1 }"
       >
         <img
@@ -54,7 +54,7 @@
 
       <div
         :key="[5, i].join('')"
-        :class="`item color-col-${i + 1}`"
+        :class="`item item-col ingridient color-col-${i + 1}`"
         :style="{ 'grid-row': cells.size, 'grid-column': i + 1 }"
       >
         <img
@@ -84,9 +84,10 @@
   height: 100%;
   background: transparent;
   position: relative;
+  border-radius: 10%;
 
   display: grid;
-  grid-gap: 1vh;
+  // grid-gap: 1vh;
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(9, 1fr);
 
@@ -94,6 +95,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1vh;
 
     img {
       max-width: 100%;
@@ -103,17 +105,18 @@
     }
   }
 
-  svg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    stroke-dasharray: 1;
-    stroke-width: 0.1;
-    // stroke: rgb(180, 180, 180);
-    stroke: rgb(0, 0, 0);
+  .item-col {
+    border-right: 1px solid var(--color-dilimiter-line);
+  }
+
+  .item-row {
+    border-top: 1px solid var(--color-dilimiter-line);
   }
 }
+
+.ingridient:first {
+    border-top-left-radius: 25%;
+  }
 
 .color-col-2,
 .color-row-8 {
@@ -159,8 +162,10 @@
   background: linear-gradient(
     to top right,
     transparent 0,
-    transparent 30%,
-    var(--color-mushroom) 65%,
+    transparent 49%,
+    var(--color-dilimiter-line) 50%,
+    var(--color-dilimiter-line) 50.5%,
+    var(--color-mushroom) 51%,
     var(--color-mushroom) 100%
   );
 }
@@ -169,8 +174,10 @@
   background: linear-gradient(
     to top right,
     var(--color-mushroom) 0,
-    var(--color-mushroom) 40%,
-    var(--color-ivy) 60%,
+    var(--color-mushroom) 49%,
+    var(--color-dilimiter-line) 50%,
+    var(--color-dilimiter-line) 50.5%,
+    var(--color-ivy) 51%,
     var(--color-ivy) 100%
   );
 }
@@ -179,8 +186,10 @@
   background: linear-gradient(
     to top right,
     var(--color-ivy) 0,
-    var(--color-ivy) 40%,
-    var(--color-toad) 70%,
+    var(--color-ivy) 49%,
+    var(--color-dilimiter-line) 50%,
+    var(--color-dilimiter-line) 50.5%,
+    var(--color-toad) 51%,
     var(--color-toad) 100%
   );
 }
@@ -189,8 +198,10 @@
   background: linear-gradient(
     to top right,
     var(--color-toad) 0,
-    var(--color-toad) 30%,
-    var(--color-chicken-foot) 70%,
+    var(--color-toad) 49%,
+    var(--color-dilimiter-line) 50%,
+    var(--color-dilimiter-line) 50.5%,
+    var(--color-chicken-foot) 51%,
     var(--color-chicken-foot) 100%
   );
 }
@@ -199,8 +210,10 @@
   background: linear-gradient(
     to top right,
     var(--color-chicken-foot) 0,
-    var(--color-chicken-foot) 30%,
-    var(--color-flower) 70%,
+    var(--color-chicken-foot) 49%,
+    var(--color-dilimiter-line) 50%,
+    var(--color-dilimiter-line) 50.5%,
+    var(--color-flower) 51%,
     var(--color-flower) 100%
   );
 }
@@ -209,8 +222,10 @@
   background: linear-gradient(
     to top right,
     var(--color-flower) 0,
-    var(--color-flower) 30%,
-    var(--color-mandrake) 63%,
+    var(--color-flower) 49%,
+    var(--color-dilimiter-line) 50%,
+    var(--color-dilimiter-line) 50.5%,
+    var(--color-mandrake) 51%,
     var(--color-mandrake) 100%
   );
 }
@@ -219,8 +234,10 @@
   background: linear-gradient(
     to top right,
     var(--color-mandrake) 0,
-    var(--color-mandrake) 40%,
-    var(--color-scorpion) 70%,
+    var(--color-mandrake) 49%,
+    var(--color-dilimiter-line) 50%,
+    var(--color-dilimiter-line) 50.5%,
+    var(--color-scorpion) 51%,
     var(--color-scorpion) 100%
   );
 }
@@ -229,8 +246,10 @@
   background: linear-gradient(
     to top right,
     var(--color-scorpion) 0,
-    var(--color-scorpion) 30%,
-    var(--color-crow-feather) 63%,
+    var(--color-scorpion) 49%,
+    var(--color-dilimiter-line) 50%,
+    var(--color-dilimiter-line) 50.5%,
+    var(--color-crow-feather) 51%,
     var(--color-crow-feather) 100%
   );
 }
@@ -239,8 +258,10 @@
   background: linear-gradient(
     to top right,
     var(--color-crow-feather) 0,
-    var(--color-crow-feather) 30%,
-    transparent 70%,
+    var(--color-crow-feather) 49%,
+    var(--color-dilimiter-line) 50%,
+    var(--color-dilimiter-line) 50.5%,
+    transparent 51%,
     transparent 100%
   );
 }

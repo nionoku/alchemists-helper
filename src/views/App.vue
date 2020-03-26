@@ -21,7 +21,7 @@
             >
               mdi-flask-outline
             </v-icon>
-            <span v-if="$vuetify.breakpoint.mdAndUp">{{ $vuetify.lang.t('$vuetify.tabs.tablet') }}</span>
+            <span v-if="$vuetify.breakpoint.smAndUp">{{ $vuetify.lang.t('$vuetify.tabs.tablet') }}</span>
           </v-tab>
           <v-tab>
             <v-icon
@@ -30,7 +30,7 @@
             >
               mdi-grid
             </v-icon>
-            <span v-if="$vuetify.breakpoint.mdAndUp">{{ $vuetify.lang.t('$vuetify.tabs.record_sheet') }}</span>
+            <span v-if="$vuetify.breakpoint.smAndUp">{{ $vuetify.lang.t('$vuetify.tabs.record_sheet') }}</span>
           </v-tab>
         </v-tabs>
       </template>
