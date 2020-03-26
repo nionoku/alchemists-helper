@@ -6,7 +6,18 @@
         :key="[7, i, j].join('')"
         :class="`item item-col item-row color-col-${j + 1} color-row-${i + 1}`"
       >
-        X
+        <v-icon
+          v-if="recordSheet[j][i] == -1"
+          class="mark-red"
+        >
+          mdi-18px mdi-window-close
+        </v-icon>
+        <v-icon
+          v-else-if="recordSheet[j][i] == 1"
+          class="mark-green"
+        >
+          mdi-18px mdi-checkbox-marked-circle-outline
+        </v-icon>
       </div>
     </template>
 
@@ -60,6 +71,14 @@
       opacity: var(--opacity-images);
     }
   }
+}
+
+.mark-red {
+  color: var(--color-red);
+}
+
+.mark-green {
+  color: var(--color-green);
 }
 
 .color-col-1 {
