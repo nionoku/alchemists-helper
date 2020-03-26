@@ -1,6 +1,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import TabletComponent from '@/components/TabletComponent.vue';
 import RecordSheetComponent from '@/components/RecordSheetComponent.vue';
+import { ItemValue } from '@/models/ElementModel';
 
 @Component({
   components: {
@@ -13,12 +14,12 @@ export default class AppView extends Vue {
     model: 0
   };
   protected tablet = [
-    [0],
-    [0, 0],
-    [0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0]
+    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
+    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
+    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
+    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
+    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
+    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
+    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]]
   ];
 }
