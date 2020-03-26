@@ -5,7 +5,7 @@
       flat
       dense
     >
-      <v-toolbar-title>Alchemists Helper</v-toolbar-title>
+      <v-toolbar-title v-text="$vuetify.lang.t('$vuetify.title')" />
 
       <template v-slot:extension>
         <v-tabs
