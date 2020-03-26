@@ -1,5 +1,6 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { ConstantManager } from '@/utils/ConstantManager';
+import { ItemValue } from '@/models/ElementModel';
 
 @Component
 export default class TabletComponent extends Vue {
@@ -13,31 +14,32 @@ export default class TabletComponent extends Vue {
     }
   }
   protected tablet: Array<Array<Array<number>>> = [
-    [[0, 0, 0]],
-    [[0, 0, 0], [0, 0, 0]],
-    [[0, 0, 0], [0, 0, 0], [0, 0, 0]],
-    [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]],
-    [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]],
-    [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]],
-    [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]
+    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
+    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
+    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
+    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
+    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
+    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
+    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]]
   ];
   protected readonly cells = {
-    size: 9
+    size: 9,
+    tablet: 7
   };
 
   protected created () {
     try {
       const storedTablet: Array<Array<Array<number>>> = JSON.parse(localStorage.getItem(ConstantManager.TABLET_STORAGE) as string);
 
-      for (let i = 0; i < storedTablet.length; i++) {
+      for (let i = 0; i < this.cells.tablet; i++) {
         for (let j = 0; j < storedTablet[i].length; j++) {
-          this.tablet[i][j] = storedTablet[i][j];
+          this.$set(this.tablet[i], j, storedTablet[i][j]);
         }
       }
     } catch (err) {
-      for (let i = 0; i < this.tablet.length; i++) {
+      for (let i = 0; i < this.cells.tablet; i++) {
         for (let j = 0; j < this.tablet[i].length; j++) {
-          this.tablet[i][j] = [0, 0, 0];
+          this.$set(this.tablet[i], j, [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]);
         }
       }
     }
@@ -47,31 +49,35 @@ export default class TabletComponent extends Vue {
     return [
       {
         img: 'img/game/potion_neutral.png',
-        value: [0, 0, 0]
+        value: [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]
+      },
+      {
+        img: 'img/game/potion_neutral.png',
+        value: [ItemValue.NEUTRAL, ItemValue.NEUTRAL, ItemValue.NEUTRAL]
       },
       {
         img: 'img/game/potion_blue_positive.png',
-        value: [0, 0, 1]
+        value: [ItemValue.NEUTRAL, ItemValue.NEUTRAL, ItemValue.POSITIVE]
       },
       {
         img: 'img/game/potion_blue_negative.png',
-        value: [0, 0, -1]
+        value: [ItemValue.NEUTRAL, ItemValue.NEUTRAL, ItemValue.NEGATIVE]
       },
       {
         img: 'img/game/potion_green_positive.png',
-        value: [0, 1, 0]
+        value: [ItemValue.NEUTRAL, ItemValue.POSITIVE, ItemValue.NEUTRAL]
       },
       {
         img: 'img/game/potion_green_negative.png',
-        value: [0, -1, 0]
+        value: [ItemValue.NEUTRAL, ItemValue.NEGATIVE, ItemValue.NEUTRAL]
       },
       {
         img: 'img/game/potion_red_positive.png',
-        value: [1, 0, 0]
+        value: [ItemValue.POSITIVE, ItemValue.NEUTRAL, ItemValue.NEUTRAL]
       },
       {
         img: 'img/game/potion_red_negative.png',
-        value: [-1, 0, 0]
+        value: [ItemValue.NEGATIVE, ItemValue.NEUTRAL, ItemValue.NEUTRAL]
       }
     ];
   }
@@ -94,12 +100,16 @@ export default class TabletComponent extends Vue {
   }
 
   protected setPotition (potion: number) {
-    this.$set(this.tablet[this.potionDialog.selected.i], this.potionDialog.selected.j, this.potions[potion]);
+    this.$set(this.tablet[this.potionDialog.selected.i], this.potionDialog.selected.j, this.potions[potion].value);
     this.potionDialog.model = false;
   }
 
+  protected potionImageByFormula (formula: Array<number>) {
+    return this.potions.filter(it => it.value.every((value, index) => value == formula[index]))[0].img;
+  }
+
   @Watch('tablet')
-  protected onTabletHasChanged (value: Array<Array<number>>) {
+  protected onTabletHasChanged (value: Array<Array<Array<number>>>) {
     localStorage.setItem(ConstantManager.TABLET_STORAGE, JSON.stringify(value));
 
     this.$emit('input', value);
