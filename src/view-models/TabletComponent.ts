@@ -1,4 +1,5 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { ConstantManager } from '@/utils/ConstantManager';
 
 @Component
 export default class TabletComponent extends Vue {
@@ -11,7 +12,7 @@ export default class TabletComponent extends Vue {
       j: -1
     }
   }
-  protected readonly sTablet = [
+  protected tablet: Array<Array<number>> = [
     [0],
     [0, 0],
     [0, 0, 0],
@@ -24,9 +25,24 @@ export default class TabletComponent extends Vue {
     size: 9
   };
 
-  protected get tablet () {
-    return this.sTablet;
+  protected created () {
+    try {
+      const storedTablet: Array<Array<number>> = JSON.parse(localStorage.getItem(ConstantManager.TABLET_STORAGE) as string);
+
+      for (let i = 0; i < storedTablet.length; i++) {
+        for (let j = 0; j < storedTablet[i].length; j++) {
+          this.tablet[i][j] = storedTablet[i][j];
+        }
+      }
+    } catch (err) {
+      for (let i = 0; i < this.tablet.length; i++) {
+        for (let j = 0; j < this.tablet[i].length; j++) {
+          this.tablet[i][j] = 0;
+        }
+      }
+    }
   }
+
   protected get potions () {
     return [
       'img/game/potion_neutral.png',
@@ -57,12 +73,14 @@ export default class TabletComponent extends Vue {
   }
 
   protected setPotition (potion: number) {
-    this.$set(this.sTablet[this.potionDialog.selected.i], this.potionDialog.selected.j, potion);
+    this.$set(this.tablet[this.potionDialog.selected.i], this.potionDialog.selected.j, potion);
     this.potionDialog.model = false;
   }
 
-  @Watch('sTablet')
+  @Watch('tablet')
   protected onTabletHasChanged (value: Array<Array<number>>) {
+    localStorage.setItem(ConstantManager.TABLET_STORAGE, JSON.stringify(value));
+
     this.$emit('input', value);
   }
 }
