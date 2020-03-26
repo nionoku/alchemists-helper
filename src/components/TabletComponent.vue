@@ -47,8 +47,8 @@
           />
         </template>
 
-        <!-- Template for left column ingridients -->
         <template v-for="(i) in ingridients.length">
+          <!-- Template for left column ingridients -->
           <div
             :key="[4, i].join('')"
             :class="`item item-row ingridient color-row-${i}`"
@@ -60,6 +60,7 @@
             >
           </div>
 
+          <!-- Template for bottom row ingridients -->
           <div
             :key="[5, i].join('')"
             :class="`item item-col ingridient color-col-${i + 1}`"
@@ -87,7 +88,6 @@
                     class="potion-icon"
                     :src="item"
                     alt=""
-                    style="opacity: 0.1"
                   >
                 </v-list-item-avatar>
               </v-list-item-content>
@@ -104,8 +104,6 @@
   width: 100%;
   height: 100%;
   background: transparent;
-  position: relative;
-  border-radius: 10%;
 
   display: grid;
   // grid-gap: 1vh;
@@ -122,7 +120,7 @@
       max-width: 100%;
       max-height: 100%;
 
-      opacity: 0.1;
+      opacity: var(--opacity-images);
     }
   }
 

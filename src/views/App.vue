@@ -46,7 +46,7 @@
             <TabletComponent v-model="tablet" />
           </v-tab-item>
 
-          <v-tab-item>
+          <v-tab-item class="flex-full-size">
             <RecordSheetComponent v-model="tablet" />
           </v-tab-item>
         </v-tabs-items>
