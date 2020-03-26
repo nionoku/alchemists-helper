@@ -1,13 +1,14 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { ItemModel, ItemSize, ItemValue } from '@/models/ElementModel';
 
 @Component
 export default class RecordSheetComponent extends Vue {
   @Prop({ required: true })
-  protected value!: Array<Array<number>>
+  protected value!: Array<Array<Array<number>>>
   protected readonly cells = {
     size: 9
   };
-  protected recordSheet = [
+  protected readonly recordSheet = [
     [0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0],
@@ -16,6 +17,120 @@ export default class RecordSheetComponent extends Vue {
     [0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0]
+  ];
+  protected readonly formulasValues: Array<Array<ItemModel>> = [
+    [
+      {
+        size: ItemSize.SMALL,
+        value: ItemValue.NEGATIVE
+      },
+      {
+        size: ItemSize.SMALL,
+        value: ItemValue.POSITIVE
+      },
+      {
+        size: ItemSize.LARGE,
+        value: ItemValue.NEGATIVE
+      }
+    ],
+    [
+      {
+        size: ItemSize.SMALL,
+        value: ItemValue.POSITIVE
+      },
+      {
+        size: ItemSize.SMALL,
+        value: ItemValue.NEGATIVE
+      },
+      {
+        size: ItemSize.LARGE,
+        value: ItemValue.POSITIVE
+      }
+    ],
+    [
+      {
+        size: ItemSize.SMALL,
+        value: ItemValue.POSITIVE
+      },
+      {
+        size: ItemSize.LARGE,
+        value: ItemValue.NEGATIVE
+      },
+      {
+        size: ItemSize.SMALL,
+        value: ItemValue.NEGATIVE
+      }
+    ],
+    [
+      {
+        size: ItemSize.SMALL,
+        value: ItemValue.NEGATIVE
+      },
+      {
+        size: ItemSize.LARGE,
+        value: ItemValue.POSITIVE
+      },
+      {
+        size: ItemSize.SMALL,
+        value: ItemValue.POSITIVE
+      }
+    ],
+    [
+      {
+        size: ItemSize.LARGE,
+        value: ItemValue.NEGATIVE
+      },
+      {
+        size: ItemSize.SMALL,
+        value: ItemValue.NEGATIVE
+      },
+      {
+        size: ItemSize.SMALL,
+        value: ItemValue.POSITIVE
+      }
+    ],
+    [
+      {
+        size: ItemSize.LARGE,
+        value: ItemValue.POSITIVE
+      },
+      {
+        size: ItemSize.SMALL,
+        value: ItemValue.POSITIVE
+      },
+      {
+        size: ItemSize.SMALL,
+        value: ItemValue.NEGATIVE
+      }
+    ],
+    [
+      {
+        size: ItemSize.LARGE,
+        value: ItemValue.NEGATIVE
+      },
+      {
+        size: ItemSize.LARGE,
+        value: ItemValue.NEGATIVE
+      },
+      {
+        size: ItemSize.LARGE,
+        value: ItemValue.NEGATIVE
+      }
+    ],
+    [
+      {
+        size: ItemSize.LARGE,
+        value: ItemValue.POSITIVE
+      },
+      {
+        size: ItemSize.LARGE,
+        value: ItemValue.POSITIVE
+      },
+      {
+        size: ItemSize.LARGE,
+        value: ItemValue.POSITIVE
+      }
+    ]
   ];
 
   protected created () {
@@ -48,11 +163,25 @@ export default class RecordSheetComponent extends Vue {
   }
 
   @Watch('value')
-  protected onValueUpdated (value: Array<Array<number>>) {
+  protected onValueUpdated (value: Array<Array<Array<number>>>) {
     for (let i = 0; i < value.length; i++) {
       for (let j = 0; j < value[i].length; j++) {
-        if (value[i][j] > 0) {
-          for (let k = 0; k < this.recordSheet[i].length; k++) {
+
+        // for 1 color potions
+        if (value[i][j].filter(it => it != 0).length == 1) {
+          // TODO
+
+          // for 2 color's potions
+        } else if (value[i][j].filter(it => it != 0).length == 2) {
+          // TODO
+        } else {
+
+        }
+
+
+        for (let k = 0; k < this.recordSheet[i].length; k++) {
+
+          if (this.formulasValues[k].blue.value == ItemValue.POSITIVE) {
             // i + 1 = coord by x
             // j = coord by y
             this.$set(this.recordSheet[i + 1], k, -1);
@@ -62,4 +191,5 @@ export default class RecordSheetComponent extends Vue {
       }
     }
   }
+}
 }
