@@ -1,4 +1,4 @@
-# alchemists-helper
+# alchemists-e-board
 
 ## Project setup
 ```
