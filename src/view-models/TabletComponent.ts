@@ -12,14 +12,14 @@ export default class TabletComponent extends Vue {
       j: -1
     }
   }
-  protected tablet: Array<Array<number>> = [
-    [0],
-    [0, 0],
-    [0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0]
+  protected tablet: Array<Array<Array<number>>> = [
+    [[0, 0, 0]],
+    [[0, 0, 0], [0, 0, 0]],
+    [[0, 0, 0], [0, 0, 0], [0, 0, 0]],
+    [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]],
+    [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]],
+    [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]],
+    [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]
   ];
   protected readonly cells = {
     size: 9
@@ -27,7 +27,7 @@ export default class TabletComponent extends Vue {
 
   protected created () {
     try {
-      const storedTablet: Array<Array<number>> = JSON.parse(localStorage.getItem(ConstantManager.TABLET_STORAGE) as string);
+      const storedTablet: Array<Array<Array<number>>> = JSON.parse(localStorage.getItem(ConstantManager.TABLET_STORAGE) as string);
 
       for (let i = 0; i < storedTablet.length; i++) {
         for (let j = 0; j < storedTablet[i].length; j++) {
@@ -37,7 +37,7 @@ export default class TabletComponent extends Vue {
     } catch (err) {
       for (let i = 0; i < this.tablet.length; i++) {
         for (let j = 0; j < this.tablet[i].length; j++) {
-          this.tablet[i][j] = 0;
+          this.tablet[i][j] = [0, 0, 0];
         }
       }
     }
@@ -45,13 +45,34 @@ export default class TabletComponent extends Vue {
 
   protected get potions () {
     return [
-      'img/game/potion_neutral.png',
-      'img/game/potion_blue_positive.png',
-      'img/game/potion_blue_negative.png',
-      'img/game/potion_green_positive.png',
-      'img/game/potion_green_negative.png',
-      'img/game/potion_red_positive.png',
-      'img/game/potion_red_negative.png'
+      {
+        img: 'img/game/potion_neutral.png',
+        value: [0, 0, 0]
+      },
+      {
+        img: 'img/game/potion_blue_positive.png',
+        value: [0, 0, 1]
+      },
+      {
+        img: 'img/game/potion_blue_negative.png',
+        value: [0, 0, -1]
+      },
+      {
+        img: 'img/game/potion_green_positive.png',
+        value: [0, 1, 0]
+      },
+      {
+        img: 'img/game/potion_green_negative.png',
+        value: [0, -1, 0]
+      },
+      {
+        img: 'img/game/potion_red_positive.png',
+        value: [1, 0, 0]
+      },
+      {
+        img: 'img/game/potion_red_negative.png',
+        value: [-1, 0, 0]
+      }
     ];
   }
   protected get ingridients () {
@@ -73,7 +94,7 @@ export default class TabletComponent extends Vue {
   }
 
   protected setPotition (potion: number) {
-    this.$set(this.tablet[this.potionDialog.selected.i], this.potionDialog.selected.j, potion);
+    this.$set(this.tablet[this.potionDialog.selected.i], this.potionDialog.selected.j, this.potions[potion]);
     this.potionDialog.model = false;
   }
 
