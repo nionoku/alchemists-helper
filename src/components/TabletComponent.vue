@@ -17,7 +17,7 @@
             @click="setSelectedField(tablet.length - i, j - 1)"
           >
             <img
-              :src="potions[tablet[tablet.length - i][j - 1]]"
+              :src="potionImageByFormula(tablet[tablet.length - i][j - 1])"
               alt=""
             >
           </div>
@@ -32,7 +32,7 @@
             @click="setSelectedField(tablet.length - i, j - 1)"
           >
             <img
-              :src="potions[tablet[tablet.length - i][j - 1]]"
+              :src="potionImageByFormula(tablet[tablet.length - i][j - 1])"
               alt=""
             >
           </div>
@@ -86,7 +86,7 @@
                 <v-list-item-avatar>
                   <img
                     class="potion-icon"
-                    :src="item"
+                    :src="item.img"
                     alt=""
                   >
                 </v-list-item-avatar>
