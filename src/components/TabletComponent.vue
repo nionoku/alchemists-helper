@@ -1,80 +1,101 @@
 <template>
   <div class="tablet-grid">
-    <template v-for="(i) in tablet.length">
-      <!-- Template for top left triangle -->
-      <div
-        v-for="(j) in (tablet.length + 1 - i)"
-        :key="[1, i, j].join('')"
-        :class="`item item-row color-row-${i} color-col-${j + 1}`"
-        :style="{ 'grid-row': i, 'grid-column': j + 1 }"
-        @click="setPotition(tablet.length - i, j - 1)"
-      >
-        <img
-          :src="potions[tablet[tablet.length - i][j - 1]]"
-          alt=""
-        >
-      </div>
-
-      <!-- Template for bottom right triangle -->
-      <div
-        v-for="(j) in (tablet.length + 1 - i)"
-        :key="[2, i, j].join('')"
-        :class="`item item-col color-row-${cells.size - j} color-col-${cells.size - i + 1}`"
-        :style="{ 'grid-row': cells.size - j, 'grid-column': cells.size + 1 - i }"
-        @click="setPotition(tablet.length - i, j - 1)"
-      >
-        <img
-          :src="potions[tablet[tablet.length - i][j - 1]]"
-          alt=""
-        >
-      </div>
-    </template>
-
-    <!-- Template for main diagonal -->
-    <template v-for="(i) in cells.size">
-      <div
-        :key="[3, i].join('')"
-        :class="`gradient-${i}`"
-        :style="{ 'grid-row': i, 'grid-column': cells.size + 1 - i }"
-      />
-    </template>
-
-    <!-- Template for left column ingridients -->
-    <template v-for="(i) in ingridients.length">
-      <div
-        :key="[4, i].join('')"
-        :class="`item item-row ingridient color-row-${i}`"
-        :style="{ 'grid-row': i, 'grid-column': 1 }"
-      >
-        <img
-          :src="ingridients[ingridients.length - i]"
-          alt=""
-        >
-      </div>
-
-      <div
-        :key="[5, i].join('')"
-        :class="`item item-col ingridient color-col-${i + 1}`"
-        :style="{ 'grid-row': cells.size, 'grid-column': i + 1 }"
-      >
-        <img
-          :src="ingridients[i - 1]"
-          alt=""
-        >
-      </div>
-    </template>
-
-    <svg
-      viewBox="0 0 100 100"
-      preserveAspectRatio="none"
+    <v-dialog
+      v-model="potionDialog.model"
+      max-width="480"
+      scrollable
     >
-      <line
-        x1="0"
-        y1="100%"
-        x2="100%"
-        y2="0"
-      />
-    </svg>
+      <template v-slot:activator="{ on }">
+        <template v-for="(i) in tablet.length">
+          <!-- Template for top left triangle -->
+          <div
+            v-for="(j) in (tablet.length + 1 - i)"
+            :key="[1, i, j].join('')"
+            :class="`item item-row color-row-${i} color-col-${j + 1}`"
+            :style="{ 'grid-row': i, 'grid-column': j + 1 }"
+            v-on="on"
+            @click="setSelectedField(tablet.length - i, j - 1)"
+          >
+            <img
+              :src="potions[tablet[tablet.length - i][j - 1]]"
+              alt=""
+            >
+          </div>
+
+          <!-- Template for bottom right triangle -->
+          <div
+            v-for="(j) in (tablet.length + 1 - i)"
+            :key="[2, i, j].join('')"
+            :class="`item item-col color-row-${cells.size - j} color-col-${cells.size - i + 1}`"
+            :style="{ 'grid-row': cells.size - j, 'grid-column': cells.size + 1 - i }"
+            v-on="on"
+            @click="setSelectedField(tablet.length - i, j - 1)"
+          >
+            <img
+              :src="potions[tablet[tablet.length - i][j - 1]]"
+              alt=""
+            >
+          </div>
+        </template>
+
+        <!-- Template for main diagonal -->
+        <template v-for="(i) in cells.size">
+          <div
+            :key="[3, i].join('')"
+            :class="`gradient-${i}`"
+            :style="{ 'grid-row': i, 'grid-column': cells.size + 1 - i }"
+          />
+        </template>
+
+        <!-- Template for left column ingridients -->
+        <template v-for="(i) in ingridients.length">
+          <div
+            :key="[4, i].join('')"
+            :class="`item item-row ingridient color-row-${i}`"
+            :style="{ 'grid-row': i, 'grid-column': 1 }"
+          >
+            <img
+              :src="ingridients[ingridients.length - i]"
+              alt=""
+            >
+          </div>
+
+          <div
+            :key="[5, i].join('')"
+            :class="`item item-col ingridient color-col-${i + 1}`"
+            :style="{ 'grid-row': cells.size, 'grid-column': i + 1 }"
+          >
+            <img
+              :src="ingridients[i - 1]"
+              alt=""
+            >
+          </div>
+        </template>
+      </template>
+
+      <v-card>
+        <v-card-text>
+          <v-list>
+            <v-list-item
+              v-for="(item, i) in potions"
+              :key="[6, i].join('')"
+              @click="setPotition(i)"
+            >
+              <v-list-item-content>
+                <v-list-item-avatar>
+                  <img
+                    class="potion-icon"
+                    :src="item"
+                    alt=""
+                    style="opacity: 0.1"
+                  >
+                </v-list-item-avatar>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -114,9 +135,13 @@
   }
 }
 
+.potion-icon {
+  width: auto;
+}
+
 .ingridient:first {
-    border-top-left-radius: 25%;
-  }
+  border-top-left-radius: 25%;
+}
 
 .color-col-2,
 .color-row-8 {
