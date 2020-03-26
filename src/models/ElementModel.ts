@@ -1,13 +1,9 @@
 /* eslint-disable no-unused-vars */
-// export interface ElementModel {
-//   red: ItemModel,
-//   green: ItemModel,
-//   blue: ItemModel
-// }
-
 export enum ItemValue {
-  NEGATIVE,
-  POSITIVE
+  UNDEFINED = 100,
+  NEUTRAL = 0,
+  NEGATIVE = -1,
+  POSITIVE = 1
 }
 
 export enum ItemSize {
