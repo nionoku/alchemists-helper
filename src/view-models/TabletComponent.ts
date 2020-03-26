@@ -4,6 +4,13 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 export default class TabletComponent extends Vue {
   @Prop({ required: true })
   protected value!: Array<Array<number>>
+  protected potionDialog = {
+    model: false,
+    selected: {
+      i: -1,
+      j: -1
+    }
+  }
   protected readonly sTablet = [
     [0],
     [0, 0],
@@ -44,12 +51,14 @@ export default class TabletComponent extends Vue {
     ];
   }
 
-  protected setPotition (i: number, j: number) {
-    this.$set(this.sTablet[i], j, this.sTablet[i][j] + 1);
+  protected setSelectedField (i: number, j: number) {
+    this.potionDialog.selected.i = i;
+    this.potionDialog.selected.j = j;
+  }
 
-    if (this.sTablet[i][j] >= this.potions.length) {
-      this.$set(this.sTablet[i], j, 0);
-    }
+  protected setPotition (potion: number) {
+    this.$set(this.sTablet[this.potionDialog.selected.i], this.potionDialog.selected.j, potion);
+    this.potionDialog.model = false;
   }
 
   @Watch('sTablet')
