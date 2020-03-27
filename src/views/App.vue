@@ -7,6 +7,15 @@
     >
       <v-toolbar-title v-text="$vuetify.lang.t('$vuetify.title')" />
 
+      <v-spacer />
+
+      <v-btn
+        icon
+        @click="refresh"
+      >
+        <v-icon>mdi-hexagon-multiple-outline</v-icon>
+      </v-btn>
+
       <template v-slot:extension>
         <v-tabs
           v-model="tabs.model"
