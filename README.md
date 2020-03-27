@@ -1,4 +1,4 @@
-# alchemists-e-board
+# alchemists-tablet
 
 ## Project setup
 ```
