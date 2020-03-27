@@ -82,14 +82,12 @@
               :key="[6, i].join('')"
               @click="setPotition(i)"
             >
-              <v-list-item-content>
-                <v-list-item-avatar>
-                  <img
-                    class="potion-icon"
-                    :src="item.img"
-                    alt=""
-                  >
-                </v-list-item-avatar>
+              <v-list-item-content class="potion-container">
+                <img
+                  class="potion-container__item"
+                  :src="item.img"
+                  alt=""
+                >
               </v-list-item-content>
             </v-list-item>
           </v-list>
@@ -133,8 +131,13 @@
   }
 }
 
-.potion-icon {
-  width: auto;
+.potion-container {
+  justify-content: center;
+
+  &__item {
+    flex: 0;
+    height: 6vh;
+  }
 }
 
 .ingridient:first {
