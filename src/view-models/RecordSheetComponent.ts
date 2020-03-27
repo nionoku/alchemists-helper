@@ -11,26 +11,8 @@ export default class RecordSheetComponent extends Vue {
   protected readonly cells = {
     size: 9
   };
-  protected readonly userRecordSheet: Array<Array<RecordSheetItem>> = [
-    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
-    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
-    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
-    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
-    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
-    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
-    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
-    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY]
-  ];
-  protected readonly recordSheet: Array<Array<RecordSheetItem>> = [
-    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
-    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
-    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
-    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
-    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
-    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
-    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
-    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY]
-  ];
+  protected readonly userRecordSheet: Array<Array<RecordSheetItem>> = Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => RecordSheetItem.EMPTY));
+  protected readonly recordSheet: Array<Array<RecordSheetItem>> = Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => RecordSheetItem.EMPTY));
   protected readonly formulasValues: Array<Array<ItemModel>> = [
     [
       {
@@ -200,7 +182,7 @@ export default class RecordSheetComponent extends Vue {
     }
 
     localStorage.setItem(ConstantManager.USER_RECORD_SHEET, JSON.stringify(this.userRecordSheet));
-    
+
     this.onValueUpdated(this.value);
   }
 
@@ -212,22 +194,12 @@ export default class RecordSheetComponent extends Vue {
       }
     }
 
+    // cycle for colored potions
     for (let i = 0; i < value.length; i++) {
       for (let j = 0; j < value[i].length; j++) {
 
-        // for soup
-        if (value[i][j].every(it => it == ItemValue.NEUTRAL)) {
-          for (let k = 0; k < this.recordSheet[i].length; k++) {
-            if (this.recordSheet[i + 1][k] != RecordSheetItem.EMPTY) {
-              this.$set(this.recordSheet[j], k % 2 > 0 ? k - 1 : k + 1, RecordSheetItem.MARK);
-            }
-
-            if (this.recordSheet[j][k] != RecordSheetItem.EMPTY) {
-              this.$set(this.recordSheet[i + 1], k % 2 > 0 ? k - 1 : k + 1, RecordSheetItem.MARK);
-            }
-          }
-          // for 1 color potions
-        } else if (value[i][j].filter(it => it != ItemValue.NEUTRAL).length == 1) {
+        // for 1 color potions
+        if (value[i][j].filter(it => it != ItemValue.NEUTRAL).length == 1) {
           for (let k = 0; k < this.recordSheet[i].length; k++) {
             if (value[i][j].some((it, index) => it != ItemValue.NEUTRAL && it != this.formulasValues[k][index].value)) {
               this.$set(this.recordSheet[i + 1], k, RecordSheetItem.MARK);
@@ -240,6 +212,25 @@ export default class RecordSheetComponent extends Vue {
             if (value[i][j].every((it, index) => it != this.formulasValues[k][index].value)) {
               this.$set(this.recordSheet[i + 1], k, RecordSheetItem.MARK);
               this.$set(this.recordSheet[j], k, RecordSheetItem.MARK);
+            }
+          }
+        }
+      }
+    }
+
+    // cycle for colorless potions
+    for (let i = 0; i < value.length; i++) {
+      for (let j = 0; j < value[i].length; j++) {
+
+        // for soup
+        if (value[i][j].every(it => it == ItemValue.NEUTRAL)) {
+          for (let k = 0; k < this.recordSheet[i].length; k++) {
+            if (this.recordSheet[i + 1][k] != RecordSheetItem.EMPTY) {
+              this.$set(this.recordSheet[j], k % 2 > 0 ? k - 1 : k + 1, RecordSheetItem.MARK);
+            }
+
+            if (this.recordSheet[j][k] != RecordSheetItem.EMPTY) {
+              this.$set(this.recordSheet[i + 1], k % 2 > 0 ? k - 1 : k + 1, RecordSheetItem.MARK);
             }
           }
         }

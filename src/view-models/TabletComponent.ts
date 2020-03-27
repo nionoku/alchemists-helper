@@ -13,15 +13,12 @@ export default class TabletComponent extends Vue {
       j: -1
     }
   }
-  protected tablet: Array<Array<Array<number>>> = [
-    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
-    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
-    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
-    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
-    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
-    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
-    [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]]
-  ];
+  protected readonly tablet: Array<Array<Array<number>>> =
+    Array.from({ length: 7 }, (_, v) =>
+      Array.from({ length: v + 1 }, () =>
+        Array.from({ length: 3 }, () => ItemValue.UNDEFINED)
+      )
+    );
   protected readonly cells = {
     size: 9,
     tablet: 7
@@ -40,7 +37,7 @@ export default class TabletComponent extends Vue {
     } catch (err) {
       for (let i = 0; i < this.cells.tablet; i++) {
         for (let j = 0; j < this.tablet[i].length; j++) {
-          this.$set(this.tablet[i], j, [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]);
+          this.$set(this.tablet[i], j, Array.from({ length: 3 }, () => ItemValue.UNDEFINED));
         }
       }
     }
@@ -121,6 +118,7 @@ export default class TabletComponent extends Vue {
   }
 
   protected setSelectedField (i: number, j: number) {
+    this.potionDialog.model = true;
     this.potionDialog.selected.i = i;
     this.potionDialog.selected.j = j;
   }

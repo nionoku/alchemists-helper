@@ -1,79 +1,75 @@
 <template>
   <div class="tablet-grid">
+    <template v-for="(i) in tablet.length">
+      <!-- Template for top left triangle -->
+      <div
+        v-for="(j) in (tablet.length + 1 - i)"
+        :key="[1, i, j].join('')"
+        :class="`item item-row color-row-${i} color-col-${j + 1}`"
+        :style="{ 'grid-row': i, 'grid-column': j + 1 }"
+        @click="setSelectedField(tablet.length - i, j - 1)"
+      >
+        <img
+          :src="potionImageByFormula(tablet[tablet.length - i][j - 1])"
+          alt=""
+        >
+      </div>
+
+      <!-- Template for bottom right triangle -->
+      <div
+        v-for="(j) in (tablet.length + 1 - i)"
+        :key="[2, i, j].join('')"
+        :class="`item item-col color-row-${cells.size - j} color-col-${cells.size - i + 1}`"
+        :style="{ 'grid-row': cells.size - j, 'grid-column': cells.size + 1 - i }"
+        @click="setSelectedField(tablet.length - i, j - 1)"
+      >
+        <img
+          :src="potionImageByFormula(tablet[tablet.length - i][j - 1])"
+          alt=""
+        >
+      </div>
+    </template>
+
+    <!-- Template for main diagonal -->
+    <template v-for="(i) in cells.size">
+      <div
+        :key="[3, i].join('')"
+        :class="`gradient-${i}`"
+        :style="{ 'grid-row': i, 'grid-column': cells.size + 1 - i }"
+      />
+    </template>
+
+    <template v-for="(i) in ingridients.length">
+      <!-- Template for left column ingridients -->
+      <div
+        :key="[4, i].join('')"
+        :class="`item item-row ingridient color-row-${i}`"
+        :style="{ 'grid-row': i, 'grid-column': 1 }"
+      >
+        <img
+          :src="ingridients[ingridients.length - i]"
+          alt=""
+        >
+      </div>
+
+      <!-- Template for bottom row ingridients -->
+      <div
+        :key="[5, i].join('')"
+        :class="`item item-col ingridient color-col-${i + 1}`"
+        :style="{ 'grid-row': cells.size, 'grid-column': i + 1 }"
+      >
+        <img
+          :src="ingridients[i - 1]"
+          alt=""
+        >
+      </div>
+    </template>
+
     <v-dialog
       v-model="potionDialog.model"
       max-width="480"
       scrollable
     >
-      <template v-slot:activator="{ on }">
-        <template v-for="(i) in tablet.length">
-          <!-- Template for top left triangle -->
-          <div
-            v-for="(j) in (tablet.length + 1 - i)"
-            :key="[1, i, j].join('')"
-            :class="`item item-row color-row-${i} color-col-${j + 1}`"
-            :style="{ 'grid-row': i, 'grid-column': j + 1 }"
-            v-on="on"
-            @click="setSelectedField(tablet.length - i, j - 1)"
-          >
-            <img
-              :src="potionImageByFormula(tablet[tablet.length - i][j - 1])"
-              alt=""
-            >
-          </div>
-
-          <!-- Template for bottom right triangle -->
-          <div
-            v-for="(j) in (tablet.length + 1 - i)"
-            :key="[2, i, j].join('')"
-            :class="`item item-col color-row-${cells.size - j} color-col-${cells.size - i + 1}`"
-            :style="{ 'grid-row': cells.size - j, 'grid-column': cells.size + 1 - i }"
-            v-on="on"
-            @click="setSelectedField(tablet.length - i, j - 1)"
-          >
-            <img
-              :src="potionImageByFormula(tablet[tablet.length - i][j - 1])"
-              alt=""
-            >
-          </div>
-        </template>
-
-        <!-- Template for main diagonal -->
-        <template v-for="(i) in cells.size">
-          <div
-            :key="[3, i].join('')"
-            :class="`gradient-${i}`"
-            :style="{ 'grid-row': i, 'grid-column': cells.size + 1 - i }"
-          />
-        </template>
-
-        <template v-for="(i) in ingridients.length">
-          <!-- Template for left column ingridients -->
-          <div
-            :key="[4, i].join('')"
-            :class="`item item-row ingridient color-row-${i}`"
-            :style="{ 'grid-row': i, 'grid-column': 1 }"
-          >
-            <img
-              :src="ingridients[ingridients.length - i]"
-              alt=""
-            >
-          </div>
-
-          <!-- Template for bottom row ingridients -->
-          <div
-            :key="[5, i].join('')"
-            :class="`item item-col ingridient color-col-${i + 1}`"
-            :style="{ 'grid-row': cells.size, 'grid-column': i + 1 }"
-          >
-            <img
-              :src="ingridients[i - 1]"
-              alt=""
-            >
-          </div>
-        </template>
-      </template>
-
       <v-card>
         <v-card-text>
           <v-list>
