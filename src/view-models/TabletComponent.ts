@@ -28,6 +28,7 @@ export default class TabletComponent extends Vue {
   };
 
   protected created () {
+    // load tablet from storage
     try {
       const storedTablet: Array<Array<Array<number>>> = JSON.parse(localStorage.getItem(ConstantManager.TABLET_STORAGE) as string);
 

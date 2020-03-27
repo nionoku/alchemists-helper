@@ -2,6 +2,7 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 // eslint-disable-next-line no-unused-vars
 import { ItemModel, ItemSize, ItemValue } from '@/models/ElementModel';
 import { RecordSheetItem } from '@/utils/RecordSheetItem';
+import { ConstantManager } from '@/utils/ConstantManager';
 
 @Component
 export default class RecordSheetComponent extends Vue {
@@ -10,6 +11,16 @@ export default class RecordSheetComponent extends Vue {
   protected readonly cells = {
     size: 9
   };
+  protected readonly userRecordSheet: Array<Array<RecordSheetItem>> = [
+    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
+    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
+    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
+    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
+    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
+    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
+    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
+    [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY]
+  ];
   protected readonly recordSheet: Array<Array<RecordSheetItem>> = [
     [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
     [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
@@ -136,6 +147,23 @@ export default class RecordSheetComponent extends Vue {
   ];
 
   protected created () {
+    // load user record sheet from storage
+    try {
+      const loadedUserRecordSheet: Array<Array<number>> = JSON.parse(localStorage.getItem(ConstantManager.USER_RECORD_SHEET) as string);
+
+      for (let i = 0; i < this.cells.size - 1; i++) {
+        for (let j = 0; j < this.cells.size - 1; j++) {
+          this.userRecordSheet[i][j] = loadedUserRecordSheet[i][j];
+        }
+      }
+    } catch (err) {
+      for (let i = 0; i < this.cells.size - 1; i++) {
+        for (let j = 0; j < this.cells.size - 1; j++) {
+          this.userRecordSheet[i][j] = RecordSheetItem.EMPTY;
+        }
+      }
+    }
+
     this.onValueUpdated(this.value);
   }
 
@@ -162,6 +190,18 @@ export default class RecordSheetComponent extends Vue {
       'img/game/rsp_gsn_blp.png',
       'img/game/rsn_gsp_bln.png',
     ];
+  }
+
+  protected userMark (i: number, j: number) {
+    if (this.userRecordSheet[i][j] != RecordSheetItem.USER_MARK) {
+      this.userRecordSheet[i][j] = RecordSheetItem.USER_MARK;
+    } else {
+      this.userRecordSheet[i][j] = RecordSheetItem.EMPTY;
+    }
+
+    localStorage.setItem(ConstantManager.USER_RECORD_SHEET, JSON.stringify(this.userRecordSheet));
+    
+    this.onValueUpdated(this.value);
   }
 
   @Watch('value')
@@ -202,6 +242,15 @@ export default class RecordSheetComponent extends Vue {
               this.$set(this.recordSheet[j], k, RecordSheetItem.MARK);
             }
           }
+        }
+      }
+    }
+
+    // merge with user's record sheet
+    for (let i = 0; i < this.recordSheet.length; i++) {
+      for (let j = 0; j < this.recordSheet[i].length; j++) {
+        if (this.userRecordSheet[i][j] == RecordSheetItem.USER_MARK) {
+          this.$set(this.recordSheet[i], j, RecordSheetItem.USER_MARK);
         }
       }
     }

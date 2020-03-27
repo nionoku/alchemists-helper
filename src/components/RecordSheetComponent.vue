@@ -5,6 +5,7 @@
         v-for="(___, j) in recordSheet[i].length"
         :key="[7, i, j].join('')"
         :class="`item item-col item-row color-col-${j + 1} color-row-${i + 1}`"
+        @click="userMark(j, i)"
       >
         <v-icon
           v-if="recordSheet[j][i] == 1"
