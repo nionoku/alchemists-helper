@@ -48,11 +48,11 @@ export default class TabletComponent extends Vue {
   protected get potions () {
     return [
       {
-        img: 'img/game/undefined_flask.svg',
+        img: 'img/game/potion_undefined.svg',
         value: [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]
       },
       {
-        img: 'img/game/potion_neutral.svg',
+        img: 'img/game/potion_neutral.png',
         value: [ItemValue.NEUTRAL, ItemValue.NEUTRAL, ItemValue.NEUTRAL]
       },
       {
