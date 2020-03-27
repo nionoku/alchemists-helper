@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "17737b02ef5b03d7aa84",
-    "url": "css/app.045664b7.css"
+    "revision": "c635ae84978d507e65e2",
+    "url": "css/app.2996b8a6.css"
   },
   {
-    "revision": "60a3ed53456d3212ce18",
-    "url": "css/chunk-vendors.835aa6a3.css"
+    "revision": "5854db3d76f856990443",
+    "url": "css/chunk-vendors.a0c50cc2.css"
   },
   {
-    "revision": "541e65fb46e44ecdf7a9da8a9b881446",
-    "url": "fonts/materialdesignicons-webfont.541e65fb.eot"
+    "revision": "63d2a5950fc212096c3612f71ae66f64",
+    "url": "fonts/materialdesignicons-webfont.63d2a595.woff"
   },
   {
-    "revision": "c61b9c12f68ee1ba045a4b49dba29ca5",
-    "url": "fonts/materialdesignicons-webfont.c61b9c12.woff2"
+    "revision": "7fb0e3780372f10f804513e2e0c39e78",
+    "url": "fonts/materialdesignicons-webfont.7fb0e378.woff2"
   },
   {
-    "revision": "fc03f7f15facede623faa7666c7d1f5a",
-    "url": "fonts/materialdesignicons-webfont.fc03f7f1.ttf"
+    "revision": "a1a0ed860f50ffd42ba46d7c10f30255",
+    "url": "fonts/materialdesignicons-webfont.a1a0ed86.eot"
   },
   {
-    "revision": "ff13d121c1a1cf74d8e06bd39e1746c3",
-    "url": "fonts/materialdesignicons-webfont.ff13d121.woff"
+    "revision": "fe1545ef4dd1eef2f1e25528898fc0b3",
+    "url": "fonts/materialdesignicons-webfont.fe1545ef.ttf"
   },
   {
     "revision": "d9ba25a5421f9183cc8ff372a0228b76",
@@ -152,16 +152,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/game/toad.jpg"
   },
   {
-    "revision": "2d3d91875f88037f0465c88697aee53e",
+    "revision": "e49231a1aa92f9b9f6ab174f31386216",
     "url": "index.html"
   },
   {
-    "revision": "17737b02ef5b03d7aa84",
-    "url": "js/app.d6667757.js"
+    "revision": "c635ae84978d507e65e2",
+    "url": "js/app.37866d49.js"
   },
   {
-    "revision": "60a3ed53456d3212ce18",
-    "url": "js/chunk-vendors.1b7d670c.js"
+    "revision": "5854db3d76f856990443",
+    "url": "js/chunk-vendors.37d919da.js"
   },
   {
     "revision": "c56468dda83c5c0df79dcec0da02186f",
