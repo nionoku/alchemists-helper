@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2427c6713b2e60bf18ec",
+    "revision": "6587c403763caaf9be59",
     "url": "css/app.c2893775.css"
   },
   {
@@ -180,12 +180,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/game/undefined_flask.svg"
   },
   {
-    "revision": "97e67b4ebc00857607f5f9d7df9f26f3",
+    "revision": "3ad134c7a272dd34f69a1e1b11062d37",
     "url": "index.html"
   },
   {
-    "revision": "2427c6713b2e60bf18ec",
-    "url": "js/app.0815416e.js"
+    "revision": "6587c403763caaf9be59",
+    "url": "js/app.aefc3121.js"
   },
   {
     "revision": "5854db3d76f856990443",
