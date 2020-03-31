@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "186cf9c7ec28442349b6",
+    "revision": "2427c6713b2e60bf18ec",
     "url": "css/app.c2893775.css"
   },
   {
@@ -60,8 +60,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/game/potion_blue_positive.png"
   },
   {
+    "revision": "9e74e2dfd2f3a11c42287b71792081f0",
+    "url": "img/game/potion_green_blue_negative.png"
+  },
+  {
     "revision": "3888b379e6add88e128adaca038e6ad9",
     "url": "img/game/potion_green_blue_negative.svg"
+  },
+  {
+    "revision": "02974f9756250f52c934e9e714c285c5",
+    "url": "img/game/potion_green_blue_positive.png"
   },
   {
     "revision": "0c19b78790ff5e542214020481bbf92d",
@@ -84,16 +92,32 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/game/potion_neutral.svg"
   },
   {
+    "revision": "515b6fbd2a87f60b218ea2325cd8b1c7",
+    "url": "img/game/potion_red_blue_negative.png"
+  },
+  {
     "revision": "a479714918d72d6cfa5e2559c213915d",
     "url": "img/game/potion_red_blue_negative.svg"
+  },
+  {
+    "revision": "0f2b51d84944201ee2514515c7d90676",
+    "url": "img/game/potion_red_blue_positive.png"
   },
   {
     "revision": "e5fb1a0ab74ebdbd0df943a79daca14f",
     "url": "img/game/potion_red_blue_positive.svg"
   },
   {
+    "revision": "55d655261be031602886214aa2e60356",
+    "url": "img/game/potion_red_green_negative.png"
+  },
+  {
     "revision": "f678e31a990bd14a4c00028b0c31f103",
     "url": "img/game/potion_red_green_negative.svg"
+  },
+  {
+    "revision": "b4ef7c1f855511d06f363751669ce132",
+    "url": "img/game/potion_red_green_positive.png"
   },
   {
     "revision": "e9c1bd745b5f6e63c51c536b0d81f187",
@@ -152,12 +176,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/game/toad.jpg"
   },
   {
-    "revision": "c7b32d3faa60a0aa53149659dc7d0717",
+    "revision": "b8f8e595a11702c8cadbc4719d42dba0",
+    "url": "img/game/undefined_flask.svg"
+  },
+  {
+    "revision": "97e67b4ebc00857607f5f9d7df9f26f3",
     "url": "index.html"
   },
   {
-    "revision": "186cf9c7ec28442349b6",
-    "url": "js/app.417a4f53.js"
+    "revision": "2427c6713b2e60bf18ec",
+    "url": "js/app.0815416e.js"
   },
   {
     "revision": "5854db3d76f856990443",
