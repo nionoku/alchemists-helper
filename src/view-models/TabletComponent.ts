@@ -52,7 +52,7 @@ export default class TabletComponent extends Vue {
         value: [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]
       },
       {
-        img: 'img/game/potion_neutral.svg',
+        img: 'img/game/potion_neutral.png',
         value: [ItemValue.NEUTRAL, ItemValue.NEUTRAL, ItemValue.NEUTRAL]
       },
       {
@@ -81,27 +81,27 @@ export default class TabletComponent extends Vue {
       },
 
       {
-        img: 'img/game/potion_red_green_negative.svg',
+        img: 'img/game/potion_red_green_negative.png',
         value: [ItemValue.NEGATIVE, ItemValue.NEGATIVE, ItemValue.NEUTRAL]
       },
       {
-        img: 'img/game/potion_red_green_positive.svg',
+        img: 'img/game/potion_red_green_positive.png',
         value: [ItemValue.POSITIVE, ItemValue.POSITIVE, ItemValue.NEUTRAL]
       },
       {
-        img: 'img/game/potion_red_blue_negative.svg',
+        img: 'img/game/potion_red_blue_negative.png',
         value: [ItemValue.NEGATIVE, ItemValue.NEUTRAL, ItemValue.NEGATIVE]
       },
       {
-        img: 'img/game/potion_red_blue_positive.svg',
+        img: 'img/game/potion_red_blue_positive.png',
         value: [ItemValue.POSITIVE, ItemValue.NEUTRAL, ItemValue.POSITIVE]
       },
       {
-        img: 'img/game/potion_green_blue_negative.svg',
+        img: 'img/game/potion_green_blue_negative.png',
         value: [ItemValue.NEUTRAL, ItemValue.NEGATIVE, ItemValue.NEGATIVE]
       },
       {
-        img: 'img/game/potion_green_blue_positive.svg',
+        img: 'img/game/potion_green_blue_positive.png',
         value: [ItemValue.NEUTRAL, ItemValue.POSITIVE, ItemValue.POSITIVE]
       }
     ];
