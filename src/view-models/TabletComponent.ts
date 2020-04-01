@@ -74,12 +74,12 @@ export default class TabletComponent extends Vue {
         value: [ItemValue.NEUTRAL, ItemValue.NEUTRAL, ItemValue.NEUTRAL]
       },
       {
-        img: 'img/game/potion_red_negative.png',
-        value: [ItemValue.NEGATIVE, ItemValue.NEUTRAL, ItemValue.NEUTRAL]
+        img: 'img/game/potion_red_positive.png',
+        value: [ItemValue.POSITIVE, ItemValue.NEUTRAL, ItemValue.NEUTRAL]
       },
       {
-        img: 'img/game/potion_blue_positive.png',
-        value: [ItemValue.NEUTRAL, ItemValue.NEUTRAL, ItemValue.POSITIVE]
+        img: 'img/game/potion_red_negative.png',
+        value: [ItemValue.NEGATIVE, ItemValue.NEUTRAL, ItemValue.NEUTRAL]
       },
       {
         img: 'img/game/potion_green_positive.png',
@@ -90,8 +90,8 @@ export default class TabletComponent extends Vue {
         value: [ItemValue.NEUTRAL, ItemValue.NEGATIVE, ItemValue.NEUTRAL]
       },
       {
-        img: 'img/game/potion_red_positive.png',
-        value: [ItemValue.POSITIVE, ItemValue.NEUTRAL, ItemValue.NEUTRAL]
+        img: 'img/game/potion_blue_positive.png',
+        value: [ItemValue.NEUTRAL, ItemValue.NEUTRAL, ItemValue.POSITIVE]
       },
       {
         img: 'img/game/potion_blue_negative.png',
