@@ -1,7 +1,7 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4e214460327d27facf67",
-    "url": "css/app.c2893775.css"
+    "revision": "bb2774e9cbcd2636f2c2",
+    "url": "css/app.04d564cc.css"
   },
   {
     "revision": "5854db3d76f856990443",
@@ -144,12 +144,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/game/toad.jpg"
   },
   {
-    "revision": "cef5dbc7b8350b6b83385b3ceb3859a3",
+    "revision": "dd005744a7e5d0b1b713edd7aa0010b3",
     "url": "index.html"
   },
   {
-    "revision": "4e214460327d27facf67",
-    "url": "js/app.2453fdf5.js"
+    "revision": "bb2774e9cbcd2636f2c2",
+    "url": "js/app.d046a677.js"
   },
   {
     "revision": "5854db3d76f856990443",
