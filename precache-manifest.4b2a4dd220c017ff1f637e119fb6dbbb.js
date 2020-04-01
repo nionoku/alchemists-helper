@@ -140,6 +140,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/game/toad.jpg"
   },
   {
+    "revision": "b8f8e595a11702c8cadbc4719d42dba0",
+    "url": "img/game/undefined_flask.svg"
+  },
+  {
     "revision": "63eb207297dd1bbf2ea4669a6a2b9843",
     "url": "index.html"
   },
