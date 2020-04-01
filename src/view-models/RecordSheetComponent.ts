@@ -2,6 +2,10 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 // eslint-disable-next-line no-unused-vars
 import { ItemModel, ItemSize, ItemValue } from '@/models/ElementModel';
 import { RecordSheetItem } from '@/utils/RecordSheetItem';
+<<<<<<< HEAD
+=======
+import { ConstantManager } from '@/utils/ConstantManager';
+>>>>>>> 42b90ca60b867ecbefd8663d6c5750d98978af0d
 
 @Component
 export default class RecordSheetComponent extends Vue {
@@ -10,6 +14,7 @@ export default class RecordSheetComponent extends Vue {
   protected readonly cells = {
     size: 9
   };
+<<<<<<< HEAD
   protected readonly recordSheet: Array<Array<RecordSheetItem>> = [
     [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
     [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
@@ -20,6 +25,10 @@ export default class RecordSheetComponent extends Vue {
     [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY],
     [RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY, RecordSheetItem.EMPTY]
   ];
+=======
+  protected readonly userRecordSheet: Array<Array<RecordSheetItem>> = Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => RecordSheetItem.EMPTY));
+  protected readonly recordSheet: Array<Array<RecordSheetItem>> = Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => RecordSheetItem.EMPTY));
+>>>>>>> 42b90ca60b867ecbefd8663d6c5750d98978af0d
   protected readonly formulasValues: Array<Array<ItemModel>> = [
     [
       {
@@ -136,6 +145,23 @@ export default class RecordSheetComponent extends Vue {
   ];
 
   protected created () {
+    // load user record sheet from storage
+    try {
+      const loadedUserRecordSheet: Array<Array<number>> = JSON.parse(localStorage.getItem(ConstantManager.USER_RECORD_SHEET) as string);
+
+      for (let i = 0; i < this.cells.size - 1; i++) {
+        for (let j = 0; j < this.cells.size - 1; j++) {
+          this.userRecordSheet[i][j] = loadedUserRecordSheet[i][j];
+        }
+      }
+    } catch (err) {
+      for (let i = 0; i < this.cells.size - 1; i++) {
+        for (let j = 0; j < this.cells.size - 1; j++) {
+          this.userRecordSheet[i][j] = RecordSheetItem.EMPTY;
+        }
+      }
+    }
+
     this.onValueUpdated(this.value);
   }
 
@@ -164,6 +190,18 @@ export default class RecordSheetComponent extends Vue {
     ];
   }
 
+  protected userMark (i: number, j: number) {
+    if (this.userRecordSheet[i][j] != RecordSheetItem.USER_MARK) {
+      this.userRecordSheet[i][j] = RecordSheetItem.USER_MARK;
+    } else {
+      this.userRecordSheet[i][j] = RecordSheetItem.EMPTY;
+    }
+
+    localStorage.setItem(ConstantManager.USER_RECORD_SHEET, JSON.stringify(this.userRecordSheet));
+
+    this.onValueUpdated(this.value);
+  }
+
   @Watch('value')
   protected onValueUpdated (value: Array<Array<Array<number>>>) {
     for (let i = 0; i < this.recordSheet.length; i++) {
@@ -172,11 +210,40 @@ export default class RecordSheetComponent extends Vue {
       }
     }
 
+<<<<<<< HEAD
+=======
+    // cycle for colored potions
+    for (let i = 0; i < value.length; i++) {
+      for (let j = 0; j < value[i].length; j++) {
+
+        // for 1 color potions
+        if (value[i][j].filter(it => it != ItemValue.NEUTRAL).length == 1) {
+          for (let k = 0; k < this.recordSheet[i].length; k++) {
+            if (value[i][j].some((it, index) => it != ItemValue.NEUTRAL && it != this.formulasValues[k][index].value)) {
+              this.$set(this.recordSheet[i + 1], k, RecordSheetItem.MARK);
+              this.$set(this.recordSheet[j], k, RecordSheetItem.MARK);
+            }
+          }
+          // for 2 color's potions
+        } else if (value[i][j].filter(it => it != ItemValue.NEUTRAL).length == 2) {
+          for (let k = 0; k < this.recordSheet[i].length; k++) {
+            if (value[i][j].every((it, index) => it != this.formulasValues[k][index].value)) {
+              this.$set(this.recordSheet[i + 1], k, RecordSheetItem.MARK);
+              this.$set(this.recordSheet[j], k, RecordSheetItem.MARK);
+            }
+          }
+        }
+      }
+    }
+
+    // cycle for colorless potions
+>>>>>>> 42b90ca60b867ecbefd8663d6c5750d98978af0d
     for (let i = 0; i < value.length; i++) {
       for (let j = 0; j < value[i].length; j++) {
 
         // for soup
         if (value[i][j].every(it => it == ItemValue.NEUTRAL)) {
+<<<<<<< HEAD
           for (let k = 0; k < this.recordSheet[i].length; k++) {
             if (this.recordSheet[i + 1][k] != RecordSheetItem.EMPTY) {
               this.$set(this.recordSheet[j], k % 2 > 0 ? k - 1 : k + 1, RecordSheetItem.MARK);
@@ -200,8 +267,26 @@ export default class RecordSheetComponent extends Vue {
             if (value[i][j].every((it, index) => it != this.formulasValues[k][index].value)) {
               this.$set(this.recordSheet[i + 1], k, RecordSheetItem.MARK);
               this.$set(this.recordSheet[j], k, RecordSheetItem.MARK);
+=======
+          for (let k = 0; k < this.recordSheet[i].length; k++) {
+            if (this.recordSheet[i + 1][k] != RecordSheetItem.EMPTY) {
+              this.$set(this.recordSheet[j], k % 2 > 0 ? k - 1 : k + 1, RecordSheetItem.MARK);
+            }
+
+            if (this.recordSheet[j][k] != RecordSheetItem.EMPTY) {
+              this.$set(this.recordSheet[i + 1], k % 2 > 0 ? k - 1 : k + 1, RecordSheetItem.MARK);
+>>>>>>> 42b90ca60b867ecbefd8663d6c5750d98978af0d
             }
           }
+        }
+      }
+    }
+
+    // merge with user's record sheet
+    for (let i = 0; i < this.recordSheet.length; i++) {
+      for (let j = 0; j < this.recordSheet[i].length; j++) {
+        if (this.userRecordSheet[i][j] == RecordSheetItem.USER_MARK) {
+          this.$set(this.recordSheet[i], j, RecordSheetItem.USER_MARK);
         }
       }
     }

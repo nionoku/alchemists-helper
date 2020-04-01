@@ -13,6 +13,7 @@ export default class TabletComponent extends Vue {
       j: -1
     }
   }
+<<<<<<< HEAD
   protected tablet: Array<Array<Array<number>>> = [
     [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
     [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
@@ -22,12 +23,21 @@ export default class TabletComponent extends Vue {
     [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]],
     [[ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED], [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]]
   ];
+=======
+  protected readonly tablet: Array<Array<Array<number>>> =
+    Array.from({ length: 7 }, (_, v) =>
+      Array.from({ length: v + 1 }, () =>
+        Array.from({ length: 3 }, () => ItemValue.UNDEFINED)
+      )
+    );
+>>>>>>> 42b90ca60b867ecbefd8663d6c5750d98978af0d
   protected readonly cells = {
     size: 9,
     tablet: 7
   };
 
   protected created () {
+    // load tablet from storage
     try {
       const storedTablet: Array<Array<Array<number>>> = JSON.parse(localStorage.getItem(ConstantManager.TABLET_STORAGE) as string);
 
@@ -39,7 +49,11 @@ export default class TabletComponent extends Vue {
     } catch (err) {
       for (let i = 0; i < this.cells.tablet; i++) {
         for (let j = 0; j < this.tablet[i].length; j++) {
+<<<<<<< HEAD
           this.$set(this.tablet[i], j, [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]);
+=======
+          this.$set(this.tablet[i], j, Array.from({ length: 3 }, () => ItemValue.UNDEFINED));
+>>>>>>> 42b90ca60b867ecbefd8663d6c5750d98978af0d
         }
       }
     }
@@ -48,7 +62,11 @@ export default class TabletComponent extends Vue {
   protected get potions () {
     return [
       {
+<<<<<<< HEAD
         img: 'img/game/undefined_flask.svg',
+=======
+        img: 'img/game/potion_undefined.svg',
+>>>>>>> 42b90ca60b867ecbefd8663d6c5750d98978af0d
         value: [ItemValue.UNDEFINED, ItemValue.UNDEFINED, ItemValue.UNDEFINED]
       },
       {
@@ -56,12 +74,12 @@ export default class TabletComponent extends Vue {
         value: [ItemValue.NEUTRAL, ItemValue.NEUTRAL, ItemValue.NEUTRAL]
       },
       {
-        img: 'img/game/potion_blue_positive.png',
-        value: [ItemValue.NEUTRAL, ItemValue.NEUTRAL, ItemValue.POSITIVE]
+        img: 'img/game/potion_red_negative.png',
+        value: [ItemValue.NEGATIVE, ItemValue.NEUTRAL, ItemValue.NEUTRAL]
       },
       {
-        img: 'img/game/potion_blue_negative.png',
-        value: [ItemValue.NEUTRAL, ItemValue.NEUTRAL, ItemValue.NEGATIVE]
+        img: 'img/game/potion_blue_positive.png',
+        value: [ItemValue.NEUTRAL, ItemValue.NEUTRAL, ItemValue.POSITIVE]
       },
       {
         img: 'img/game/potion_green_positive.png',
@@ -76,33 +94,64 @@ export default class TabletComponent extends Vue {
         value: [ItemValue.POSITIVE, ItemValue.NEUTRAL, ItemValue.NEUTRAL]
       },
       {
-        img: 'img/game/potion_red_negative.png',
-        value: [ItemValue.NEGATIVE, ItemValue.NEUTRAL, ItemValue.NEUTRAL]
+        img: 'img/game/potion_blue_negative.png',
+        value: [ItemValue.NEUTRAL, ItemValue.NEUTRAL, ItemValue.NEGATIVE]
       },
 
       {
+<<<<<<< HEAD
+<<<<<<< HEAD
         img: 'img/game/potion_red_green_negative.png',
         value: [ItemValue.NEGATIVE, ItemValue.NEGATIVE, ItemValue.NEUTRAL]
       },
       {
+=======
+>>>>>>> d38f0f0... Reorder potions in list
         img: 'img/game/potion_red_green_positive.png',
         value: [ItemValue.POSITIVE, ItemValue.POSITIVE, ItemValue.NEUTRAL]
       },
       {
-        img: 'img/game/potion_red_blue_negative.png',
-        value: [ItemValue.NEGATIVE, ItemValue.NEUTRAL, ItemValue.NEGATIVE]
+        img: 'img/game/potion_red_green_negative.png',
+        value: [ItemValue.NEGATIVE, ItemValue.NEGATIVE, ItemValue.NEUTRAL]
       },
       {
         img: 'img/game/potion_red_blue_positive.png',
         value: [ItemValue.POSITIVE, ItemValue.NEUTRAL, ItemValue.POSITIVE]
       },
       {
-        img: 'img/game/potion_green_blue_negative.png',
-        value: [ItemValue.NEUTRAL, ItemValue.NEGATIVE, ItemValue.NEGATIVE]
+        img: 'img/game/potion_red_blue_negative.png',
+        value: [ItemValue.NEGATIVE, ItemValue.NEUTRAL, ItemValue.NEGATIVE]
       },
       {
         img: 'img/game/potion_green_blue_positive.png',
+=======
+        img: 'img/game/potion_red_green_negative.svg',
+        value: [ItemValue.NEGATIVE, ItemValue.NEGATIVE, ItemValue.NEUTRAL]
+      },
+      {
+        img: 'img/game/potion_red_green_positive.svg',
+        value: [ItemValue.POSITIVE, ItemValue.POSITIVE, ItemValue.NEUTRAL]
+      },
+      {
+        img: 'img/game/potion_red_blue_negative.svg',
+        value: [ItemValue.NEGATIVE, ItemValue.NEUTRAL, ItemValue.NEGATIVE]
+      },
+      {
+        img: 'img/game/potion_red_blue_positive.svg',
+        value: [ItemValue.POSITIVE, ItemValue.NEUTRAL, ItemValue.POSITIVE]
+      },
+      {
+        img: 'img/game/potion_green_blue_negative.svg',
+        value: [ItemValue.NEUTRAL, ItemValue.NEGATIVE, ItemValue.NEGATIVE]
+      },
+      {
+        img: 'img/game/potion_green_blue_positive.svg',
+>>>>>>> 42b90ca60b867ecbefd8663d6c5750d98978af0d
         value: [ItemValue.NEUTRAL, ItemValue.POSITIVE, ItemValue.POSITIVE]
+      },
+      {
+        img: 'img/game/potion_green_blue_negative.png',
+        value: [ItemValue.NEUTRAL, ItemValue.NEGATIVE, ItemValue.NEGATIVE]
       }
     ];
   }
@@ -120,6 +169,7 @@ export default class TabletComponent extends Vue {
   }
 
   protected setSelectedField (i: number, j: number) {
+    this.potionDialog.model = true;
     this.potionDialog.selected.i = i;
     this.potionDialog.selected.j = j;
   }
