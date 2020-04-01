@@ -70,78 +70,6 @@
       max-width="480"
       scrollable
     >
-<<<<<<< HEAD
-      <template v-slot:activator="{ on }">
-        <template v-for="(i) in tablet.length">
-          <!-- Template for top left triangle -->
-          <div
-            v-for="(j) in (tablet.length + 1 - i)"
-            :key="[1, i, j].join('')"
-            :class="`item item-row color-row-${i} color-col-${j + 1}`"
-            :style="{ 'grid-row': i, 'grid-column': j + 1 }"
-            v-on="on"
-            @click="setSelectedField(tablet.length - i, j - 1)"
-          >
-            <img
-              :src="potionImageByFormula(tablet[tablet.length - i][j - 1])"
-              alt=""
-            >
-          </div>
-
-          <!-- Template for bottom right triangle -->
-          <div
-            v-for="(j) in (tablet.length + 1 - i)"
-            :key="[2, i, j].join('')"
-            :class="`item item-col color-row-${cells.size - j} color-col-${cells.size - i + 1}`"
-            :style="{ 'grid-row': cells.size - j, 'grid-column': cells.size + 1 - i }"
-            v-on="on"
-            @click="setSelectedField(tablet.length - i, j - 1)"
-          >
-            <img
-              :src="potionImageByFormula(tablet[tablet.length - i][j - 1])"
-              alt=""
-            >
-          </div>
-        </template>
-
-        <!-- Template for main diagonal -->
-        <template v-for="(i) in cells.size">
-          <div
-            :key="[3, i].join('')"
-            :class="`gradient-${i}`"
-            :style="{ 'grid-row': i, 'grid-column': cells.size + 1 - i }"
-          />
-        </template>
-
-        <template v-for="(i) in ingridients.length">
-          <!-- Template for left column ingridients -->
-          <div
-            :key="[4, i].join('')"
-            :class="`item item-row ingridient color-row-${i}`"
-            :style="{ 'grid-row': i, 'grid-column': 1 }"
-          >
-            <img
-              :src="ingridients[ingridients.length - i]"
-              alt=""
-            >
-          </div>
-
-          <!-- Template for bottom row ingridients -->
-          <div
-            :key="[5, i].join('')"
-            :class="`item item-col ingridient color-col-${i + 1}`"
-            :style="{ 'grid-row': cells.size, 'grid-column': i + 1 }"
-          >
-            <img
-              :src="ingridients[i - 1]"
-              alt=""
-            >
-          </div>
-        </template>
-      </template>
-
-=======
->>>>>>> 42b90ca60b867ecbefd8663d6c5750d98978af0d
       <v-card>
         <v-card-text>
           <v-list>
@@ -150,23 +78,12 @@
               :key="[6, i].join('')"
               @click="setPotition(i)"
             >
-<<<<<<< HEAD
-              <v-list-item-content>
-                <v-list-item-avatar>
-                  <img
-                    class="potion-icon"
-                    :src="item.img"
-                    alt=""
-                  >
-                </v-list-item-avatar>
-=======
               <v-list-item-content class="potion-container">
                 <img
                   class="potion-container__item"
                   :src="item.img"
                   alt=""
                 >
->>>>>>> 42b90ca60b867ecbefd8663d6c5750d98978af0d
               </v-list-item-content>
             </v-list-item>
           </v-list>

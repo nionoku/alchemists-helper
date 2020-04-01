@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-  "name": "alchemists-e-board",
-=======
   "name": "alchemists-tablet",
->>>>>>> 42b90ca60b867ecbefd8663d6c5750d98978af0d
   "version": "0.1.0",
   "private": true,
   "scripts": {

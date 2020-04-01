@@ -6,8 +6,6 @@
       dense
     >
       <v-toolbar-title v-text="$vuetify.lang.t('$vuetify.title')" />
-<<<<<<< HEAD
-=======
 
       <v-spacer />
 
@@ -17,7 +15,6 @@
       >
         <v-icon>mdi-hexagon-multiple-outline</v-icon>
       </v-btn>
->>>>>>> 42b90ca60b867ecbefd8663d6c5750d98978af0d
 
       <template v-slot:extension>
         <v-tabs
