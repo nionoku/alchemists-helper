@@ -100,10 +100,6 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/game/potion_red_positive.png"
   },
   {
-    "revision": "b8f8e595a11702c8cadbc4719d42dba0",
-    "url": "img/game/potion_undefined.svg"
-  },
-  {
     "revision": "24495be305c5f9d539b5f47f811d4c3f",
     "url": "img/game/rln_gln_bln.png"
   },

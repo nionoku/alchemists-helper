@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.16679e79bb6ef77466ade445ed58bf3b.js"
+  "precache-manifest.3795347ecc14dad9642f0de992402cab.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "alchemists-tablet"});
