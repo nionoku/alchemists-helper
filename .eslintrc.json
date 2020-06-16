@@ -1,27 +1,27 @@
 {
   "env": {
     "es6": true,
-      "node": true
+    "node": true
   },
   "extends": [
     "eslint:recommended",
     "plugin:vue/recommended",
     "plugin:@typescript-eslint/eslint-recommended"
   ],
-    "globals": {
+  "globals": {
     "Atomics": "readonly",
-      "SharedArrayBuffer": "readonly"
+    "SharedArrayBuffer": "readonly"
   },
   "parser": "vue-eslint-parser",
-    "parserOptions": {
+  "parserOptions": {
     "parser": "@typescript-eslint/parser",
-      "ecmaVersion": 2018,
-        "sourceType": "module"
+    "ecmaVersion": 2018,
+    "sourceType": "module"
   },
   "plugins": [
     "@typescript-eslint"
   ],
-    "rules": {
+  "rules": {
     "indent": [
       "error",
       2,
@@ -29,14 +29,15 @@
         "SwitchCase": 1
       }
     ],
-      "quotes": [
-        "error",
-        "single"
-      ],
-        "semi": [
-          "error",
-          "always"
-        ],
-          "no-console": "off"
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "no-console": "off",
+    "no-unused-vars": "off"
   }
 }
