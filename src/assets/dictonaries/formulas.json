@@ -1,0 +1,146 @@
+[
+  {
+    "name": "rlp_glp_blp",
+    "img": "img/game/rlp_glp_blp.png",
+    "formula": [
+      {
+        "size": "small",
+        "value": "negative"
+      },
+      {
+        "size": "small",
+        "value": "positive"
+      },
+      {
+        "size": "large",
+        "value": "negative"
+      }
+    ]
+  },
+  {
+    "name": "rln_gln_bln",
+    "img": "img/game/rln_gln_bln.png",
+    "formula": [
+      {
+        "size": "small",
+        "value": "positive"
+      },
+      {
+        "size": "small",
+        "value": "negative"
+      },
+      {
+        "size": "large",
+        "value": "positive"
+      }
+    ]
+  },
+  {
+    "name": "rlp_gsp_bsn",
+    "img": "img/game/rlp_gsp_bsn.png",
+    "formula": [
+      {
+        "size": "small",
+        "value": "positive"
+      },
+      {
+        "size": "large",
+        "value": "negative"
+      },
+      {
+        "size": "small",
+        "value": "negative"
+      }
+    ]
+  },
+  {
+    "name": "rln_gsn_bsp",
+    "img": "img/game/rln_gsn_bsp.png",
+    "formula": [
+      {
+        "size": "small",
+        "value": "negative"
+      },
+      {
+        "size": "large",
+        "value": "positive"
+      },
+      {
+        "size": "small",
+        "value": "positive"
+      }
+    ]
+  },
+  {
+    "name": "rsn_glp_bsp",
+    "img": "img/game/rsn_glp_bsp.png",
+    "formula": [
+      {
+        "size": "large",
+        "value": "negative"
+      },
+      {
+        "size": "small",
+        "value": "negative"
+      },
+      {
+        "size": "small",
+        "value": "positive"
+      }
+    ]
+  },
+  {
+    "name": "rsp_gln_bsn",
+    "img": "img/game/rsp_gln_bsn.png",
+    "formula": [
+      {
+        "size": "large",
+        "value": "positive"
+      },
+      {
+        "size": "small",
+        "value": "positive"
+      },
+      {
+        "size": "small",
+        "value": "negative"
+      }
+    ]
+  },
+  {
+    "name": "rsp_gsn_blp",
+    "img": "img/game/rsp_gsn_blp.png",
+    "formula": [
+      {
+        "size": "large",
+        "value": "negative"
+      },
+      {
+        "size": "large",
+        "value": "negative"
+      },
+      {
+        "size": "large",
+        "value": "negative"
+      }
+    ]
+  },
+  {
+    "name": "rsn_gsp_bln",
+    "img": "img/game/rsn_gsp_bln.png",
+    "formula": [
+      {
+        "size": "large",
+        "value": "positive"
+      },
+      {
+        "size": "large",
+        "value": "positive"
+      },
+      {
+        "size": "large",
+        "value": "positive"
+      }
+    ]
+  }
+]

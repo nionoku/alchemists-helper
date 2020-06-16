@@ -1,0 +1,34 @@
+[
+  {
+    "name": "mushroom",
+    "img": "img/game/mushroom.jpg"
+  },
+  {
+    "name": "ivy",
+    "img": "img/game/ivy.jpg"
+  },
+  {
+    "name": "toad",
+    "img": "img/game/toad.jpg"
+  },
+  {
+    "name": "chicken-foot",
+    "img": "img/game/chicken-foot.jpg"
+  },
+  {
+    "name": "flower",
+    "img": "img/game/flower.jpg"
+  },
+  {
+    "name": "mandrake",
+    "img": "img/game/mandrake.jpg"
+  },
+  {
+    "name": "scorpion",
+    "img": "img/game/scorpion.jpg"
+  },
+  {
+    "name": "crow-feather",
+    "img": "img/game/crow-feather.jpg"
+  }
+]

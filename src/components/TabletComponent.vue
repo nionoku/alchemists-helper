@@ -10,7 +10,7 @@
         @click="setSelectedField(tablet.length - i, j - 1)"
       >
         <img
-          :src="potionImageByFormula(tablet[tablet.length - i][j - 1])"
+          :src="potionByFormula(tablet[tablet.length - i][j - 1]).img"
           alt=""
         >
       </div>
@@ -24,7 +24,7 @@
         @click="setSelectedField(tablet.length - i, j - 1)"
       >
         <img
-          :src="potionImageByFormula(tablet[tablet.length - i][j - 1])"
+          :src="potionByFormula(tablet[tablet.length - i][j - 1]).img"
           alt=""
         >
       </div>
@@ -47,7 +47,7 @@
         :style="{ 'grid-row': i, 'grid-column': 1 }"
       >
         <img
-          :src="ingridients[ingridients.length - i]"
+          :src="ingridients[ingridients.length - i].img"
           alt=""
         >
       </div>
@@ -59,7 +59,7 @@
         :style="{ 'grid-row': cells.size, 'grid-column': i + 1 }"
       >
         <img
-          :src="ingridients[i - 1]"
+          :src="ingridients[i - 1].img"
           alt=""
         >
       </div>

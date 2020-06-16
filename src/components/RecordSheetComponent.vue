@@ -31,7 +31,7 @@
         :style="{ 'grid-row': i, 'grid-column': 1 }"
       >
         <img
-          :src="formulas[formulas.length - i]"
+          :src="formulas[formulas.length - i].img"
           alt=""
         >
       </div>
@@ -43,7 +43,7 @@
         :style="{ 'grid-row': cells.size, 'grid-column': i + 1 }"
       >
         <img
-          :src="ingridients[i - 1]"
+          :src="ingridients[i - 1].img"
           alt=""
         >
       </div>

@@ -1,0 +1,146 @@
+[
+  {
+    "name": "undefined",
+    "img": "img/game/potion_undefined.svg",
+    "value": [
+      "undefined",
+      "undefined",
+      "undefined"
+    ]
+  },
+  {
+    "name": "red_positive",
+    "img": "img/game/potion_red_positive.png",
+    "value": [
+      "positive",
+      "neutral",
+      "neutral"
+    ]
+  },
+  {
+    "name": "red_negative",
+    "img": "img/game/potion_red_negative.png",
+    "value": [
+      "negative",
+      "neutral",
+      "neutral"
+    ]
+  },
+  {
+    "name": "green_positive",
+    "img": "img/game/potion_green_positive.png",
+    "value": [
+      "neutral",
+      "positive",
+      "neutral"
+    ]
+  },
+  {
+    "name": "green_negative",
+    "img": "img/game/potion_green_negative.png",
+    "value": [
+      "neutral",
+      "negative",
+      "neutral"
+    ]
+  },
+  {
+    "name": "blue_positive",
+    "img": "img/game/potion_blue_positive.png",
+    "value": [
+      "neutral",
+      "neutral",
+      "positive"
+    ]
+  },
+  {
+    "name": "blue_negative",
+    "img": "img/game/potion_blue_negative.png",
+    "value": [
+      "neutral",
+      "neutral",
+      "negative"
+    ]
+  },
+  {
+    "name": "red_green_positive",
+    "img": "img/game/potion_red_green_positive.png",
+    "value": [
+      "positive",
+      "positive",
+      "neutral"
+    ]
+  },
+  {
+    "name": "red_green_negative",
+    "img": "img/game/potion_red_green_negative.png",
+    "value": [
+      "negative",
+      "negative",
+      "neutral"
+    ]
+  },
+  {
+    "name": "red_blue_positive",
+    "img": "img/game/potion_red_blue_positive.png",
+    "value": [
+      "positive",
+      "neutral",
+      "positive"
+    ]
+  },
+  {
+    "name": "red_blue_negative",
+    "img": "img/game/potion_red_blue_negative.png",
+    "value": [
+      "negative",
+      "neutral",
+      "negative"
+    ]
+  },
+  {
+    "name": "green_blue_positive",
+    "img": "img/game/potion_green_blue_positive.png",
+    "value": [
+      "neutral",
+      "positive",
+      "positive"
+    ]
+  },
+  {
+    "name": "green_blue_negative",
+    "img": "img/game/potion_green_blue_negative.png",
+    "value": [
+      "neutral",
+      "negative",
+      "negative"
+    ]
+  },
+  {
+    "name": "undefined_positive",
+    "img": "img/game/potion_undefined_positive.png",
+    "value": [
+      "positive",
+      "positive",
+      "positive"
+    ]
+  },
+  {
+    "name": "undefined_negative",
+    "img": "img/game/potion_undefined_negative.png",
+    "value": [
+      "negative",
+      "negative",
+      "negative"
+    ]
+  },
+  {
+    "name": "soup",
+    "img": "img/game/potion_neutral.png",
+    "value": [
+      "neutral",
+      "neutral",
+      "neutral"
+    ]
+  }
+]
