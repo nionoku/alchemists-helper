@@ -2,6 +2,7 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { Constants } from '@/utils/Constants';
 import { PotionEffect, PotionModel } from '@/models/PotionModel';
 import { IngridientsModel } from '@/models/IngridientsModel';
+import potions from '@/assets/dictonaries/potions.json';
 
 @Component
 export default class TabletComponent extends Vue {
@@ -24,8 +25,8 @@ export default class TabletComponent extends Vue {
     size: 9,
     tablet: 7
   };
-  protected readonly potions: Array<PotionModel> = require('@/assets/dictonaries/potions')
-  protected readonly ingridients: Array<IngridientsModel> = require('@/assets/dictonaries/ingridients')
+  protected readonly potions: Array<PotionModel> = require('@/assets/dictonaries/potions.json')
+  protected readonly ingridients: Array<IngridientsModel> = require('@/assets/dictonaries/ingridients.json')
 
   protected created () {
     // load tablet from storage

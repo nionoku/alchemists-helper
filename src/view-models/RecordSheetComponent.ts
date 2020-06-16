@@ -14,8 +14,8 @@ export default class RecordSheetComponent extends Vue {
   };
   protected readonly userRecordSheet: Array<Array<RecordSheetItem>> = Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => RecordSheetItem.EMPTY));
   protected readonly recordSheet: Array<Array<RecordSheetItem>> = Array.from({ length: 8 }, () => Array.from({ length: 8 }, () => RecordSheetItem.EMPTY));
-  protected readonly formulas: Array<FormulaModel> = require('@/assets/dictonaries/formulas')
-  protected readonly ingridients: Array<IngridientsModel> = require('@/assets/dictonaries/ingridients')
+  protected readonly formulas: Array<FormulaModel> = require('@/assets/dictonaries/formulas.json')
+  protected readonly ingridients: Array<IngridientsModel> = require('@/assets/dictonaries/ingridients.json')
   protected created () {
     // load user record sheet from storage
     try {
