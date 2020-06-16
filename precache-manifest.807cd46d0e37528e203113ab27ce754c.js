@@ -1,7 +1,7 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4e214460327d27facf67",
-    "url": "css/app.c2893775.css"
+    "revision": "d26a4d1ec7399636e6c9",
+    "url": "css/app.5a99f284.css"
   },
   {
     "revision": "5854db3d76f856990443",
@@ -104,6 +104,14 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/game/potion_undefined.svg"
   },
   {
+    "revision": "206116a77d7af7a72d0be578b7e7acbd",
+    "url": "img/game/potion_undefined_negative.png"
+  },
+  {
+    "revision": "37de13ad051e8d9d467643a793627c69",
+    "url": "img/game/potion_undefined_positive.png"
+  },
+  {
     "revision": "24495be305c5f9d539b5f47f811d4c3f",
     "url": "img/game/rln_gln_bln.png"
   },
@@ -144,12 +152,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "img/game/toad.jpg"
   },
   {
-    "revision": "cef5dbc7b8350b6b83385b3ceb3859a3",
+    "revision": "f3e171f27c8b7c4050d6a4f5e52db3c3",
     "url": "index.html"
   },
   {
-    "revision": "4e214460327d27facf67",
-    "url": "js/app.2453fdf5.js"
+    "revision": "d26a4d1ec7399636e6c9",
+    "url": "js/app.737d94da.js"
   },
   {
     "revision": "5854db3d76f856990443",
