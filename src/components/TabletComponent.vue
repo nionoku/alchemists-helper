@@ -11,7 +11,7 @@
       >
         <img
           :src="potionByFormula(tablet[tablet.length - i][j - 1]).img"
-          alt=""
+          :alt="potionByFormula(tablet[tablet.length - i][j - 1]).name"
         >
       </div>
 
@@ -25,7 +25,7 @@
       >
         <img
           :src="potionByFormula(tablet[tablet.length - i][j - 1]).img"
-          alt=""
+          :alt="potionByFormula(tablet[tablet.length - i][j - 1]).name"
         >
       </div>
     </template>
@@ -48,7 +48,7 @@
       >
         <img
           :src="ingridients[ingridients.length - i].img"
-          alt=""
+          :alt="ingridients[ingridients.length - i].name"
         >
       </div>
 
@@ -60,7 +60,7 @@
       >
         <img
           :src="ingridients[i - 1].img"
-          alt=""
+          :alt="ingridients[i - 1].name"
         >
       </div>
     </template>
@@ -82,7 +82,7 @@
                 <img
                   class="potion-container__item"
                   :src="item.img"
-                  alt=""
+                  :alt="item.name"
                 >
               </v-list-item-content>
             </v-list-item>
